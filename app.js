@@ -61,6 +61,7 @@ const els = {
   heroScenario:$("heroScenario"),heroNet:$("heroNet"),heroGross:$("heroGross"),heroCost:$("heroCost"),heroRatio:$("heroRatio"),
   heroFlowCost:$("heroFlowCost"),heroFlowGross:$("heroFlowGross"),heroFlowNet:$("heroFlowNet"),heroFlow:document.querySelector(".hero-flow"),
   gainSentence:$("gainSentence"),gainCost:$("gainCost"),gainValue:$("gainValue"),
+  stackCost:$("stackCost"),stackOutcome:$("stackOutcome"),stackValue:$("stackValue"),stackPnlCost:$("stackPnlCost"),stackNet:$("stackNet"),stackRatio:$("stackRatio"),
   techNet:$("techNet"),traceUseCase:$("traceUseCase"),transactionId:$("transactionId"),totalTokens:$("totalTokens"),cachedTokens:$("cachedTokens"),toolCalls:$("toolCalls"),latency:$("latency"),retries:$("retries"),costPerRun:$("costPerRun"),traceCode:$("traceCode"),techCostBreakdown:$("techCostBreakdown")
 };
 
@@ -152,6 +153,12 @@ function calculate(){
   els.gainSentence.textContent=`€1 of AI cost creates €${ratio.toFixed(1)} of business value.`;
   els.gainCost.textContent=moneyM(cost);
   els.gainValue.textContent=moneyM(gross);
+  els.stackCost.textContent=moneyM(cost);
+  els.stackOutcome.textContent=moneyM(gross);
+  els.stackValue.textContent=moneyM(gross);
+  els.stackPnlCost.textContent=moneyM(cost);
+  els.stackNet.textContent=moneyM(net);
+  els.stackRatio.textContent=ratio.toFixed(1)+"×";
 
   const max=Math.max(capacity,outcome,cost,1);
   els.capacityBar.style.width=(capacity/max*100)+"%";
