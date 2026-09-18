@@ -1,0 +1,41 @@
+scenario:
+  id: quality-operations-v1
+  name: AI-Augmented Quality Operations
+  evidence_status: MODELED
+  currency: EUR
+  period: annual
+
+scale:
+  manufacturing_sites: 10
+  investigations_per_year: 100000
+
+baseline:
+  engineer_hours_per_investigation: 2.5
+  loaded_engineering_cost_eur_per_hour: 100
+
+ai_assisted:
+  engineer_hours_per_investigation: 1.0
+  productivity_realization_factor: 0.40
+
+business_value:
+  quality_rework_avoided_eur_per_year: 4000000
+
+ai_operating_cost:
+  model_inference_eur: 310000
+  tools_compute_retrieval_eur: 240000
+  platform_eur: 350000
+  human_oversight_eur: 340000
+  operations_observability_eur: 260000
+
+expected_modeled_results:
+  engineering_hours_released_per_year: 150000
+  theoretical_capacity_value_eur: 15000000
+  realized_capacity_value_eur: 6000000
+  realized_business_value_eur: 10000000
+  ai_operating_cost_eur: 1500000
+  net_ai_contribution_eur: 8500000
+  value_per_ai_cost: 6.6667
+
+disclaimer: >
+  This scenario is a transparent economic model for demonstration purposes.
+  Values are not claimed customer results and must not be presented as measured savings.
