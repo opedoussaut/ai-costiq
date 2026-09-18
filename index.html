@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AI CostIQ — Explore the cost, business value and P&L impact of enterprise AI." />
+  <meta name="description" content="AI CostIQ — Explore AI costs, business value and P&L impact across industrial scenarios." />
   <meta property="og:title" content="AI CostIQ — AI Costs. Business Value. P&L Impact." />
-  <meta property="og:description" content="An interactive executive scenario lab for the economics of enterprise AI." />
+  <meta property="og:description" content="An interactive AI economics lab for industrial AI and agentic systems." />
   <meta property="og:type" content="website" />
-  <title>AI CostIQ — Executive AI Economics</title>
+  <title>AI CostIQ — AI Economics</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -20,227 +20,330 @@
       <span class="brand-name">AI CostIQ</span>
     </a>
     <nav>
-      <a href="#scenario-lab">Scenario Lab</a>
+      <button class="nav-view active" data-view="economics">AI Economics</button>
+      <button class="nav-view" data-view="technical">Telemetry</button>
       <a href="#evidence">Evidence</a>
-      <a href="#telemetry">Telemetry</a>
       <a class="github-link" href="https://github.com/opedoussaut/ai-costiq" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero shell">
-      <div class="eyebrow"><span class="live-dot"></span> EXECUTIVE AI ECONOMICS</div>
-      <h1>What does your AI<br><span>actually contribute?</span></h1>
-      <p class="hero-copy">Move beyond tokens and model bills. Explore AI operating cost, realized business value and P&amp;L contribution — from enterprise scale down to a single trace.</p>
-      <div class="hero-actions">
-        <a class="primary-btn" href="#scenario-lab">Explore scenarios</a>
-        <a class="secondary-btn" href="#evidence">See industry evidence</a>
-      </div>
-    </section>
-
-    <section class="executive shell" id="scenario-lab">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">SCENARIO LAB</div>
-          <h2>From AI spend to P&amp;L.</h2>
-        </div>
-        <div class="scenario-picker">
-          <button class="sector-chip active" data-sector="all">All</button>
-          <button class="sector-chip" data-sector="ad">Aerospace &amp; Defense</button>
-          <button class="sector-chip" data-sector="ht">High-Tech</button>
+      <div class="hero-copy-wrap">
+        <div class="eyebrow"><span class="live-dot"></span> AI ECONOMICS</div>
+        <h1>Make AI value<br><span>impossible to miss.</span></h1>
+        <p class="hero-copy">AI CostIQ connects what AI costs to what the business gets back — contribution, productivity, avoided cost and operating impact.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#scenario-lab">Play with the economics</a>
+          <button class="secondary-btn hero-telemetry-btn" data-view="technical">See how it is measured</button>
         </div>
       </div>
 
-      <div class="scenario-tabs" id="scenarioTabs"></div>
-
-      <div class="model-badge">
-        <span>MODELED</span>
-        Interactive scenario — transparent assumptions, not claimed customer results.
-      </div>
-
-      <div class="kpi-grid">
-        <article class="kpi-card hero-kpi">
-          <span class="kpi-label">Net AI contribution</span>
-          <strong id="netContribution">€0M</strong>
-          <span class="kpi-note">Realized value minus annual AI operating cost</span>
-        </article>
-        <article class="kpi-card">
-          <span class="kpi-label">Realized business value</span>
-          <strong id="grossValue">€0M</strong>
-          <span class="kpi-note" id="valueDelta">Capacity + operating outcome value</span>
-        </article>
-        <article class="kpi-card">
-          <span class="kpi-label">AI operating cost</span>
-          <strong id="aiCost">€0M</strong>
-          <span class="kpi-note">Full annual cost-to-serve</span>
-        </article>
-        <article class="kpi-card">
-          <span class="kpi-label">Value / AI cost</span>
-          <strong id="valueRatio">0×</strong>
-          <span class="kpi-note">Economic yield on AI operating spend</span>
-        </article>
-      </div>
-
-      <div class="lab-grid">
-        <article class="glass-panel controls-panel">
-          <div class="panel-title">
-            <div>
-              <span class="mini-label">ASSUMPTIONS</span>
-              <h3 id="scenarioTitle">Scenario</h3>
-            </div>
-            <button id="resetBtn" class="text-btn">Reset</button>
-          </div>
-
-          <div class="control-list">
-            <label class="control-row">
-              <div class="control-meta"><span>Annual transactions</span><strong id="volumeOut"></strong></div>
-              <input id="volume" type="range" min="10000" max="1000000" step="10000" />
-            </label>
-            <label class="control-row">
-              <div class="control-meta"><span>Hours saved / transaction</span><strong id="hoursOut"></strong></div>
-              <input id="hours" type="range" min="0.1" max="4" step="0.1" />
-            </label>
-            <label class="control-row">
-              <div class="control-meta"><span>Loaded labor cost</span><strong id="rateOut"></strong></div>
-              <input id="rate" type="range" min="50" max="180" step="5" />
-            </label>
-            <label class="control-row">
-              <div class="control-meta"><span>Productivity realization</span><strong id="realizationOut"></strong></div>
-              <input id="realization" type="range" min="10" max="100" step="5" />
-            </label>
-            <label class="control-row">
-              <div class="control-meta"><span>Additional operating value</span><strong id="outcomeOut"></strong></div>
-              <input id="outcome" type="range" min="0" max="100" step="0.5" />
-            </label>
-            <label class="control-row">
-              <div class="control-meta"><span>Annual AI operating cost</span><strong id="costOut"></strong></div>
-              <input id="cost" type="range" min="0.2" max="30" step="0.1" />
-            </label>
-          </div>
-        </article>
-
-        <article class="glass-panel pnl-panel">
-          <div class="panel-title">
-            <div>
-              <span class="mini-label">P&amp;L BRIDGE</span>
-              <h3>Where the value comes from</h3>
-            </div>
-            <span class="confidence-pill">MODELED</span>
-          </div>
-
-          <div class="pnl-stack">
-            <div class="pnl-line">
-              <div><span>Capacity released</span><small id="capacityHours">0 hours</small></div>
-              <strong id="capacityValue">€0M</strong>
-            </div>
-            <div class="pnl-bar"><span id="capacityBar"></span></div>
-
-            <div class="pnl-line">
-              <div><span>Operating outcome value</span><small id="outcomeLabel">Quality, uptime, throughput or cost avoided</small></div>
-              <strong id="outcomeValue">€0M</strong>
-            </div>
-            <div class="pnl-bar"><span id="outcomeBar"></span></div>
-
-            <div class="pnl-line cost-line">
-              <div><span>AI operating cost</span><small>Models, compute, data, tools, people &amp; platform</small></div>
-              <strong id="costValue">−€0M</strong>
-            </div>
-            <div class="pnl-bar cost"><span id="costBar"></span></div>
-
-            <div class="pnl-total">
-              <span>Net contribution</span>
-              <strong id="netValue">€0M</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="cost-grid">
-        <article class="glass-panel cost-panel">
-          <div class="panel-title">
-            <div>
-              <span class="mini-label">AI COST STACK</span>
-              <h3>What are we really paying for?</h3>
-            </div>
-          </div>
-          <div id="costBreakdown" class="cost-breakdown"></div>
-        </article>
-
-        <article class="glass-panel insight-panel">
-          <span class="mini-label">EXECUTIVE SIGNAL</span>
-          <div class="signal-value" id="signalValue">€0</div>
-          <h3>net contribution per transaction</h3>
-          <p id="signalText">AI CostIQ translates technical consumption into a business-unit economic signal.</p>
-          <div class="signal-footer">
-            <span>Evidence confidence</span>
-            <div class="confidence-track"><span style="width:42%"></span></div>
-            <strong>42%</strong>
-          </div>
-        </article>
-      </div>
+      <article class="hero-value-card">
+        <div class="hero-value-top">
+          <span class="mini-label light">SELECTED SCENARIO</span>
+          <span class="hero-model-pill">MODELED</span>
+        </div>
+        <div class="hero-scenario-name" id="heroScenario">Automotive Production & Quality</div>
+        <div class="hero-value-label">Annual net AI contribution</div>
+        <div class="hero-value" id="heroNet">€49.1M</div>
+        <div class="hero-value-grid">
+          <div><span>Business value</span><strong id="heroGross">€57.6M</strong></div>
+          <div><span>AI operating cost</span><strong id="heroCost">€8.5M</strong></div>
+          <div><span>Value / AI cost</span><strong id="heroRatio">6.8×</strong></div>
+        </div>
+        <div class="hero-value-foot">
+          <span>Every figure is traceable to assumptions or telemetry.</span>
+          <a href="#scenario-lab">Explore →</a>
+        </div>
+      </article>
     </section>
+
+    <div class="view-shell">
+      <section class="view-panel active" data-panel="economics">
+        <section class="executive shell" id="scenario-lab">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">SCENARIO LAB</div>
+              <h2>See where AI creates<br><span>economic leverage.</span></h2>
+            </div>
+            <div class="scenario-picker">
+              <button class="sector-chip active" data-sector="all">All</button>
+              <button class="sector-chip" data-sector="ad">Aerospace &amp; Defense</button>
+              <button class="sector-chip" data-sector="auto">Automotive</button>
+              <button class="sector-chip" data-sector="ht">High-Tech</button>
+            </div>
+          </div>
+
+          <div class="scenario-tabs" id="scenarioTabs"></div>
+
+          <div class="model-badge">
+            <span>MODELED</span>
+            Interactive scenario — transparent assumptions, not claimed customer results.
+          </div>
+
+          <div class="kpi-grid">
+            <article class="kpi-card hero-kpi">
+              <span class="kpi-label">Net AI contribution</span>
+              <strong id="netContribution">€0M</strong>
+              <span class="kpi-note">Realized value minus annual AI operating cost</span>
+            </article>
+            <article class="kpi-card gain-kpi">
+              <span class="kpi-label">Realized business value</span>
+              <strong id="grossValue">€0M</strong>
+              <span class="kpi-note">Capacity + measurable operating outcomes</span>
+            </article>
+            <article class="kpi-card">
+              <span class="kpi-label">AI operating cost</span>
+              <strong id="aiCost">€0M</strong>
+              <span class="kpi-note">Full annual cost-to-serve</span>
+            </article>
+            <article class="kpi-card">
+              <span class="kpi-label">Value / AI cost</span>
+              <strong id="valueRatio">0×</strong>
+              <span class="kpi-note">Economic yield on AI operating spend</span>
+            </article>
+          </div>
+
+          <div class="gain-banner">
+            <div>
+              <span class="mini-label">THE ECONOMIC QUESTION</span>
+              <strong id="gainSentence">€1 of AI cost creates €0 of business value.</strong>
+            </div>
+            <div class="gain-visual">
+              <span class="cost-side">AI COST <b id="gainCost">€0M</b></span>
+              <span class="gain-arrow">→</span>
+              <span class="value-side">VALUE <b id="gainValue">€0M</b></span>
+            </div>
+          </div>
+
+          <div class="lab-grid">
+            <article class="glass-panel controls-panel">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">ASSUMPTIONS</span>
+                  <h3 id="scenarioTitle">Scenario</h3>
+                </div>
+                <button id="resetBtn" class="text-btn">Reset</button>
+              </div>
+
+              <div class="control-list">
+                <label class="control-row">
+                  <div class="control-meta"><span>Annual transactions</span><strong id="volumeOut"></strong></div>
+                  <input id="volume" type="range" min="10000" max="2000000" step="10000" />
+                </label>
+                <label class="control-row">
+                  <div class="control-meta"><span>Hours saved / transaction</span><strong id="hoursOut"></strong></div>
+                  <input id="hours" type="range" min="0.1" max="4" step="0.1" />
+                </label>
+                <label class="control-row">
+                  <div class="control-meta"><span>Loaded labor cost</span><strong id="rateOut"></strong></div>
+                  <input id="rate" type="range" min="50" max="180" step="5" />
+                </label>
+                <label class="control-row">
+                  <div class="control-meta"><span>Productivity realization</span><strong id="realizationOut"></strong></div>
+                  <input id="realization" type="range" min="10" max="100" step="5" />
+                </label>
+                <label class="control-row">
+                  <div class="control-meta"><span>Additional operating value</span><strong id="outcomeOut"></strong></div>
+                  <input id="outcome" type="range" min="0" max="120" step="0.5" />
+                </label>
+                <label class="control-row">
+                  <div class="control-meta"><span>Annual AI operating cost</span><strong id="costOut"></strong></div>
+                  <input id="cost" type="range" min="0.2" max="40" step="0.1" />
+                </label>
+              </div>
+            </article>
+
+            <article class="glass-panel pnl-panel">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">P&amp;L BRIDGE</span>
+                  <h3>How the contribution is built</h3>
+                </div>
+                <span class="confidence-pill">MODELED</span>
+              </div>
+
+              <div class="pnl-stack">
+                <div class="pnl-line">
+                  <div><span>Capacity released</span><small id="capacityHours">0 hours</small></div>
+                  <strong id="capacityValue">€0M</strong>
+                </div>
+                <div class="pnl-bar"><span id="capacityBar"></span></div>
+
+                <div class="pnl-line">
+                  <div><span>Operating outcome value</span><small id="outcomeLabel">Quality, uptime, throughput or cost avoided</small></div>
+                  <strong id="outcomeValue">€0M</strong>
+                </div>
+                <div class="pnl-bar"><span id="outcomeBar"></span></div>
+
+                <div class="pnl-line cost-line">
+                  <div><span>AI operating cost</span><small>Models, compute, data, tools, people &amp; platform</small></div>
+                  <strong id="costValue">−€0M</strong>
+                </div>
+                <div class="pnl-bar cost"><span id="costBar"></span></div>
+
+                <div class="pnl-total">
+                  <span>Net contribution</span>
+                  <strong id="netValue">€0M</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="cost-grid">
+            <article class="glass-panel cost-panel">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">AI COST STACK</span>
+                  <h3>What are we really paying for?</h3>
+                </div>
+              </div>
+              <div id="costBreakdown" class="cost-breakdown"></div>
+            </article>
+
+            <article class="glass-panel insight-panel">
+              <span class="mini-label">ECONOMIC SIGNAL</span>
+              <div class="signal-value" id="signalValue">€0</div>
+              <h3>net contribution per transaction</h3>
+              <p id="signalText">AI CostIQ translates technical consumption into a business-unit economic signal.</p>
+              <div class="signal-footer">
+                <span>Evidence confidence</span>
+                <div class="confidence-track"><span style="width:42%"></span></div>
+                <strong>42%</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="view-panel" data-panel="technical">
+        <section class="technical shell" id="telemetry">
+          <div class="section-heading technical-heading">
+            <div>
+              <div class="eyebrow">TECHNICAL TELEMETRY</div>
+              <h2>See exactly how<br><span>AI cost is captured.</span></h2>
+            </div>
+            <p>AI CostIQ uses OpenTelemetry as the evidence layer between an AI run and the business transaction it supports. This demo uses synthetic telemetry until the live Codex feed is connected.</p>
+          </div>
+
+          <div class="technical-status">
+            <span class="synthetic-pill">SYNTHETIC TELEMETRY</span>
+            <span>Schema aligned to the target Codex + OpenTelemetry architecture.</span>
+          </div>
+
+          <div class="trace-flow">
+            <div class="trace-node executive-node"><small>BUSINESS</small><strong id="techNet">€0M</strong><span>Net AI contribution</span></div>
+            <div class="trace-arrow">→</div>
+            <div class="trace-node"><small>USE CASE</small><strong id="traceUseCase">Scenario</strong><span>AI-enabled business process</span></div>
+            <div class="trace-arrow">→</div>
+            <div class="trace-node"><small>TRANSACTION</small><strong id="transactionId">AUTO-001</strong><span>costiq.business.transaction.id</span></div>
+            <div class="trace-arrow">→</div>
+            <div class="trace-node code-node"><small>AGENT RUNTIME</small><strong>Codex</strong><span>OpenTelemetry export</span></div>
+          </div>
+
+          <div class="telemetry-grid">
+            <article class="glass-panel telemetry-kpis">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">RUN TELEMETRY</span>
+                  <h3>What the runtime emits</h3>
+                </div>
+                <span class="status-live"><i></i> trace sample</span>
+              </div>
+              <div class="telemetry-stat-grid">
+                <div><span>Total tokens</span><strong id="totalTokens">0</strong></div>
+                <div><span>Cached input</span><strong id="cachedTokens">0%</strong></div>
+                <div><span>Tool calls</span><strong id="toolCalls">0</strong></div>
+                <div><span>End-to-end latency</span><strong id="latency">0s</strong></div>
+                <div><span>Retries</span><strong id="retries">0</strong></div>
+                <div><span>Allocated cost / run</span><strong id="costPerRun">€0</strong></div>
+              </div>
+            </article>
+
+            <article class="glass-panel code-panel">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">TRACE ATTRIBUTES</span>
+                  <h3>OTel + CostIQ correlation</h3>
+                </div>
+              </div>
+              <pre id="traceCode"></pre>
+            </article>
+          </div>
+
+          <div class="telemetry-grid lower">
+            <article class="glass-panel">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">COST ATTRIBUTION</span>
+                  <h3>From resource consumption to €</h3>
+                </div>
+              </div>
+              <div id="techCostBreakdown" class="cost-breakdown"></div>
+            </article>
+
+            <article class="glass-panel method-panel">
+              <div class="panel-title">
+                <div>
+                  <span class="mini-label">HOW IT CONNECTS</span>
+                  <h3>Telemetry becomes P&amp;L evidence</h3>
+                </div>
+              </div>
+              <ol class="method-steps">
+                <li><b>1</b><div><strong>Capture</strong><span>Codex emits model, token, tool, latency and error telemetry.</span></div></li>
+                <li><b>2</b><div><strong>Correlate</strong><span>The run is tagged to a CostIQ business transaction ID.</span></div></li>
+                <li><b>3</b><div><strong>Cost</strong><span>Consumption is priced into a complete AI cost-to-serve.</span></div></li>
+                <li><b>4</b><div><strong>Value</strong><span>Business-system outcomes are compared with an explicit baseline.</span></div></li>
+                <li><b>5</b><div><strong>Contribute</strong><span>Realized value minus AI operating cost becomes the P&amp;L signal.</span></div></li>
+              </ol>
+            </article>
+          </div>
+
+          <div class="telemetry-note">
+            <span class="live-dot muted"></span>
+            Live Codex OpenTelemetry ingestion is the next implementation step. Public demo data is synthetic by design.
+          </div>
+        </section>
+      </section>
+    </div>
 
     <section class="evidence-section" id="evidence">
       <div class="shell">
         <div class="section-heading evidence-heading">
           <div>
             <div class="eyebrow">PUBLIC INDUSTRY EVIDENCE</div>
-            <h2>Calibrate the ambition.<br><span>Don't confuse it with proof.</span></h2>
+            <h2>Calibrate the ambition.<br><span>Separate evidence from assumptions.</span></h2>
           </div>
-          <p>External benchmarks establish plausible ranges. AI CostIQ keeps them separate from modeled assumptions and measured enterprise outcomes.</p>
+          <p>External benchmarks establish plausible ranges. They are never presented as measured AI CostIQ results.</p>
         </div>
 
         <div class="benchmark-grid">
           <a class="benchmark-card" href="https://www.mckinsey.com/industries/travel/our-insights/addressing-the-shortage-of-aviation-maintenance-technicians" target="_blank" rel="noreferrer">
-            <span class="benchmark-sector">A&amp;D · Aircraft MRO</span>
+            <span class="benchmark-sector">A&amp;D · AIRCRAFT MRO</span>
             <strong>15–35%</strong>
             <p>potential increase in maintenance technician productivity from digital and AI solutions.</p>
             <span class="source">McKinsey, 2026 ↗</span>
           </a>
-          <a class="benchmark-card" href="https://www.mckinsey.com/industries/travel/our-insights/aircraft-mro-2-point-0-the-digital-revolution" target="_blank" rel="noreferrer">
-            <span class="benchmark-sector">A&amp;D · Digital MRO</span>
-            <strong>10–20%+</strong>
-            <p>maintenance-spending reduction reported by more than a quarter of digitally advanced respondents.</p>
-            <span class="source">McKinsey, Aircraft MRO 2.0 ↗</span>
+          <a class="benchmark-card" href="https://www.mckinsey.com/industries/industrials/our-insights/the-ai-assembly-line-strategic-imperatives-for-ceos" target="_blank" rel="noreferrer">
+            <span class="benchmark-sector">AUTOMOTIVE · AI PLANNING</span>
+            <strong>$200M</strong>
+            <p>first-year profit increase reported in an OEM case after AI-driven configuration-demand forecasting and related operating changes.</p>
+            <span class="source">McKinsey, 2026 ↗</span>
           </a>
-          <a class="benchmark-card" href="https://www.mckinsey.com/industries/semiconductors/our-insights/revolutionizing-semiconductor-fab-operations-with-ai" target="_blank" rel="noreferrer">
-            <span class="benchmark-sector">HIGH-TECH · SEMICONDUCTORS</span>
-            <strong>$134B</strong>
-            <p>estimated functional-cost savings potential from scaled AI across the semiconductor industry over five to seven years.</p>
-            <span class="source">McKinsey, Aug. 2026 ↗</span>
+          <a class="benchmark-card" href="https://www.mckinsey.com/industries/industrials/our-insights/humanoid-robots-crossing-the-chasm-from-concept-to-commercial-reality" target="_blank" rel="noreferrer">
+            <span class="benchmark-sector">HIGH-TECH · HUMANOID ROBOTS</span>
+            <strong>$150–500k</strong>
+            <p>typical current prototype cost per humanoid — showing why operating economics and cost transparency matter.</p>
+            <span class="source">McKinsey, 2025 ↗</span>
           </a>
-          <a class="benchmark-card" href="https://www.mckinsey.com/industries/semiconductors/our-insights/revolutionizing-semiconductor-fab-operations-with-ai" target="_blank" rel="noreferrer">
-            <span class="benchmark-sector">HIGH-TECH · FAB OPERATIONS</span>
-            <strong>up to 35%</strong>
-            <p>labor-productivity improvement cited for LLM-enabled maintenance applications in semiconductor fabs.</p>
-            <span class="source">McKinsey, Aug. 2026 ↗</span>
+          <a class="benchmark-card" href="https://www.mckinsey.com/fr/our-insights/the-symbiotic-enterprise" target="_blank" rel="noreferrer">
+            <span class="benchmark-sector">HUMANOID SCALE ECONOMICS</span>
+            <strong>$20–50k</strong>
+            <p>cost range cited as likely required for large-scale humanoid adoption.</p>
+            <span class="source">McKinsey, 2026 ↗</span>
           </a>
         </div>
-      </div>
-    </section>
-
-    <section class="telemetry-section shell" id="telemetry">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">AUDITABLE BY DESIGN</div>
-          <h2>From the €M KPI<br><span>down to the trace.</span></h2>
-        </div>
-        <p>Executive value should never be a black box. The target architecture connects the P&amp;L view to the exact business transaction and its OpenTelemetry evidence.</p>
-      </div>
-
-      <div class="trace-flow">
-        <div class="trace-node executive-node"><small>ENTERPRISE</small><strong id="traceEnterprise">€0M</strong><span>Net AI contribution</span></div>
-        <div class="trace-arrow">→</div>
-        <div class="trace-node"><small>USE CASE</small><strong id="traceUseCase">A&amp;D MRO</strong><span>Scenario economics</span></div>
-        <div class="trace-arrow">→</div>
-        <div class="trace-node"><small>TRANSACTION</small><strong>NCR-001</strong><span>business.transaction.id</span></div>
-        <div class="trace-arrow">→</div>
-        <div class="trace-node code-node"><small>OTEL TRACE</small><strong>Codex</strong><span>tokens · tools · latency · errors</span></div>
-      </div>
-
-      <div class="telemetry-note">
-        <span class="live-dot muted"></span>
-        Public demo uses synthetic telemetry. The next implementation step replaces it with actual Codex OpenTelemetry events.
       </div>
     </section>
   </main>
