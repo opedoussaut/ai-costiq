@@ -61,7 +61,7 @@ const els = {
   heroScenario:$("heroScenario"),heroNet:$("heroNet"),heroGross:$("heroGross"),heroCost:$("heroCost"),heroRatio:$("heroRatio"),
   heroFlowCost:$("heroFlowCost"),heroFlowGross:$("heroFlowGross"),heroFlowNet:$("heroFlowNet"),heroFlow:document.querySelector(".hero-flow"),
   gainSentence:$("gainSentence"),gainCost:$("gainCost"),gainValue:$("gainValue"),
-  stackCost:$("stackCost"),stackOutcome:$("stackOutcome"),stackValue:$("stackValue"),stackPnlCost:$("stackPnlCost"),stackNet:$("stackNet"),stackRatio:$("stackRatio"),
+  stackCost:$("stackCost"),stackOutcome:$("stackOutcome"),stackValue:$("stackValue"),stackPnlCost:$("stackPnlCost"),stackNet:$("stackNet"),stackRatio:$("stackRatio"),stackStage:document.querySelector(".economics-stage"),
   techNet:$("techNet"),traceUseCase:$("traceUseCase"),transactionId:$("transactionId"),totalTokens:$("totalTokens"),cachedTokens:$("cachedTokens"),toolCalls:$("toolCalls"),latency:$("latency"),retries:$("retries"),costPerRun:$("costPerRun"),traceCode:$("traceCode"),techCostBreakdown:$("techCostBreakdown")
 };
 
@@ -159,6 +159,7 @@ function calculate(){
   els.stackPnlCost.textContent=moneyM(cost);
   els.stackNet.textContent=moneyM(net);
   els.stackRatio.textContent=ratio.toFixed(1)+"×";
+  if(els.stackStage){els.stackStage.classList.remove("stack-refresh");void els.stackStage.offsetWidth;els.stackStage.classList.add("stack-refresh");}
 
   const max=Math.max(capacity,outcome,cost,1);
   els.capacityBar.style.width=(capacity/max*100)+"%";
