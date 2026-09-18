@@ -59,6 +59,7 @@ const els = {
   outcomeValue:$("outcomeValue"), costValue:$("costValue"), netValue:$("netValue"), capacityBar:$("capacityBar"), outcomeBar:$("outcomeBar"), costBar:$("costBar"),
   outcomeLabel:$("outcomeLabel"), costBreakdown:$("costBreakdown"), signalValue:$("signalValue"), signalText:$("signalText"),
   heroScenario:$("heroScenario"),heroNet:$("heroNet"),heroGross:$("heroGross"),heroCost:$("heroCost"),heroRatio:$("heroRatio"),
+  heroFlowCost:$("heroFlowCost"),heroFlowGross:$("heroFlowGross"),heroFlowNet:$("heroFlowNet"),heroFlow:document.querySelector(".hero-flow"),
   gainSentence:$("gainSentence"),gainCost:$("gainCost"),gainValue:$("gainValue"),
   techNet:$("techNet"),traceUseCase:$("traceUseCase"),transactionId:$("transactionId"),totalTokens:$("totalTokens"),cachedTokens:$("cachedTokens"),toolCalls:$("toolCalls"),latency:$("latency"),retries:$("retries"),costPerRun:$("costPerRun"),traceCode:$("traceCode"),techCostBreakdown:$("techCostBreakdown")
 };
@@ -140,6 +141,14 @@ function calculate(){
   els.heroGross.textContent=moneyM(gross);
   els.heroCost.textContent=moneyM(cost);
   els.heroRatio.textContent=ratio.toFixed(1)+"×";
+  els.heroFlowCost.textContent=moneyM(cost);
+  els.heroFlowGross.textContent=moneyM(gross);
+  els.heroFlowNet.textContent=moneyM(net);
+  if(els.heroFlow){
+    els.heroFlow.classList.remove("flow-refresh");
+    void els.heroFlow.offsetWidth;
+    els.heroFlow.classList.add("flow-refresh");
+  }
   els.gainSentence.textContent=`€1 of AI cost creates €${ratio.toFixed(1)} of business value.`;
   els.gainCost.textContent=moneyM(cost);
   els.gainValue.textContent=moneyM(gross);
