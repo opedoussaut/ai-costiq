@@ -81,102 +81,120 @@
       <section class="view-panel active" data-panel="economics">
 
       <section class="economics-stack-section shell" id="economics-stack">
-        <div class="stack-intro">
-          <div>
-            <div class="eyebrow">THE FULL AI ECONOMICS STACK</div>
-            <h2>Tokens are only the meter.<br><span>Not the economics.</span></h2>
-          </div>
-          <p>AI CostIQ follows the complete chain from technical consumption to operating cost, business outcomes and ultimately P&amp;L contribution.</p>
+  <div class="stack-intro">
+    <div>
+      <div class="eyebrow">THE FULL AI ECONOMICS STACK</div>
+      <h2>Tokens are only the meter.<br><span>Not the economics.</span></h2>
+    </div>
+    <p>AI CostIQ follows the complete chain from technical consumption to operating cost, business outcomes and ultimately P&amp;L contribution.</p>
+  </div>
+
+  <div class="economics-stage">
+    <div class="stack-spine" aria-hidden="true">
+      <i class="spine-line"></i>
+      <i class="spine-pulse"></i>
+    </div>
+
+    <div class="stack-glow stack-glow-one"></div>
+    <div class="stack-glow stack-glow-two"></div>
+
+    <div class="stack-tier consumption-tier">
+      <div class="tier-kicker">AI CONSUMPTION</div>
+      <div class="tier-title">Telemetry surface</div>
+      <div class="stack-chip-row compact">
+        <button class="stack-chip telemetry-chip primary-chip" data-view="technical" data-tip="Directly observable in model and runtime telemetry.">Tokens</button>
+        <button class="stack-chip telemetry-chip secondary-chip" data-view="technical" data-tip="Provider requests, tool requests and external service calls.">API calls</button>
+        <button class="stack-chip telemetry-chip secondary-chip" data-view="technical" data-tip="Model runtime, latency, retries and execution duration.">Model runtime</button>
+      </div>
+      <button class="tier-link" data-view="technical">Inspect telemetry →</button>
+    </div>
+
+    <div class="stack-connector"><span>cost attribution</span></div>
+
+    <div class="stack-tier cost-tier">
+      <div class="tier-heading">
+        <div>
+          <div class="tier-kicker">FULL AI COST</div>
+          <div class="tier-title">Cost to serve</div>
         </div>
+        <strong id="stackCost">€8.5M</strong>
+      </div>
 
-        <div class="economics-stage">
-          <div class="stack-glow stack-glow-one"></div>
-          <div class="stack-glow stack-glow-two"></div>
+      <div class="stack-chip-grid cost-chip-grid">
+        <span class="stack-chip primary-chip" data-tip="Model inference, embeddings and other model-serving charges.">Inference</span>
+        <span class="stack-chip primary-chip" data-tip="GPU, CPU, simulation and general execution resources.">Compute</span>
+        <span class="stack-chip secondary-chip" data-tip="Retrieval corpora, vector stores, pipelines and data processing.">Data</span>
+        <span class="stack-chip muted-chip" data-tip="Session state, agent memory and retained context.">Memory</span>
+        <span class="stack-chip muted-chip" data-tip="Object stores, logs, traces, checkpoints and artifacts.">Storage</span>
+        <span class="stack-chip secondary-chip" data-tip="Search, MCP, APIs and enterprise system actions used by agents.">Tools</span>
+        <span class="stack-chip muted-chip" data-tip="Datacenter and accelerated-compute energy attributable to AI workloads.">Energy</span>
+        <span class="stack-chip muted-chip" data-tip="Cloud, on-prem, networking, databases and shared AI platforms.">Infrastructure</span>
+        <span class="stack-chip muted-chip" data-tip="Commercial model, platform and enterprise software entitlements.">Licenses</span>
+        <span class="stack-chip emphasis-chip primary-chip" data-tip="Human validation, exception handling, supervision and governance.">Human oversight</span>
+        <span class="stack-chip secondary-chip" data-tip="Observability, security, evaluation, support and production operations.">Operations</span>
+      </div>
+    </div>
 
-          <div class="stack-tier consumption-tier">
-            <div class="tier-kicker">AI CONSUMPTION</div>
-            <div class="tier-title">What telemetry sees first</div>
-            <div class="stack-chip-row compact">
-              <button class="stack-chip telemetry-chip" data-view="technical" data-tip="Directly observable in model and runtime telemetry.">Tokens</button>
-              <button class="stack-chip telemetry-chip" data-view="technical" data-tip="Provider requests, tool requests and external service calls.">API calls</button>
-              <button class="stack-chip telemetry-chip" data-view="technical" data-tip="Model runtime, latency, retries and execution duration.">Model runtime</button>
-            </div>
-            <button class="tier-link" data-view="technical">Inspect telemetry →</button>
-          </div>
+    <div class="stack-connector"><span>business correlation</span></div>
 
-          <div class="stack-connector"><i></i><span>cost attribution</span></div>
-
-          <div class="stack-tier cost-tier">
-            <div class="tier-heading">
-              <div>
-                <div class="tier-kicker">FULL AI COST</div>
-                <div class="tier-title">What the business actually pays for</div>
-              </div>
-              <strong id="stackCost">€8.5M</strong>
-            </div>
-            <div class="stack-chip-grid cost-chip-grid">
-              <span class="stack-chip" data-tip="Model inference, embeddings and other model-serving charges.">Inference</span>
-              <span class="stack-chip" data-tip="GPU, CPU, simulation and general execution resources.">Compute</span>
-              <span class="stack-chip" data-tip="Retrieval corpora, vector stores, pipelines and data processing.">Data</span>
-              <span class="stack-chip" data-tip="Session state, agent memory and retained context.">Memory</span>
-              <span class="stack-chip" data-tip="Object stores, logs, traces, checkpoints and artifacts.">Storage</span>
-              <span class="stack-chip" data-tip="Search, MCP, APIs and enterprise system actions used by agents.">Tools</span>
-              <span class="stack-chip" data-tip="Datacenter and accelerated-compute energy attributable to AI workloads.">Energy</span>
-              <span class="stack-chip" data-tip="Cloud, on-prem, networking, databases and shared AI platforms.">Infrastructure</span>
-              <span class="stack-chip" data-tip="Commercial model, platform and enterprise software entitlements.">Licenses</span>
-              <span class="stack-chip emphasis-chip" data-tip="Human validation, exception handling, supervision and governance.">Human oversight</span>
-              <span class="stack-chip" data-tip="Observability, security, evaluation, support and production operations.">Operations</span>
-            </div>
-          </div>
-
-          <div class="stack-connector"><i></i><span>business correlation</span></div>
-
-          <div class="stack-tier outcome-tier">
-            <div class="tier-heading">
-              <div>
-                <div class="tier-kicker">BUSINESS OUTCOMES</div>
-                <div class="tier-title">What has to change operationally</div>
-              </div>
-              <strong id="stackOutcome">€57.6M</strong>
-            </div>
-            <div class="stack-chip-grid outcome-chip-grid">
-              <span class="stack-chip" data-tip="More useful work completed with the same or fewer resources.">Productivity</span>
-              <span class="stack-chip" data-tip="Lower scrap, fewer defects, less rework and better first-pass yield.">Quality</span>
-              <span class="stack-chip" data-tip="More units, cases or decisions completed per unit of time.">Throughput</span>
-              <span class="stack-chip" data-tip="Higher asset availability and fewer unplanned interruptions.">Uptime</span>
-              <span class="stack-chip" data-tip="Reduced probability or consequence of operational and business failures.">Risk</span>
-              <span class="stack-chip" data-tip="Faster engineering, launch, maintenance or decision cycles.">Time-to-market</span>
-            </div>
-          </div>
-
-          <div class="stack-connector value-connector"><i></i><span>value realization</span></div>
-
-          <div class="stack-tier pnl-tier">
-            <div class="pnl-tier-copy">
-              <div class="tier-kicker">P&amp;L REALIZATION</div>
-              <div class="tier-title">What survives the journey into economic value</div>
-              <p>Time saved is not automatically profit. CostIQ separates theoretical benefit from value that can actually be realized.</p>
-            </div>
-            <div class="stack-pnl-math">
-              <div><span>Realized business value</span><strong id="stackValue">€57.6M</strong></div>
-              <b>−</b>
-              <div><span>AI operating cost</span><strong id="stackPnlCost">€8.5M</strong></div>
-              <b>=</b>
-              <div class="stack-net"><span>Net AI contribution</span><strong id="stackNet">€49.1M</strong></div>
-            </div>
-            <div class="stack-yield">
-              <span>AI ECONOMIC YIELD</span>
-              <strong id="stackRatio">6.8×</strong>
-              <small>business value per €1 of AI operating cost</small>
-            </div>
-          </div>
+    <div class="stack-tier outcome-tier">
+      <div class="tier-heading">
+        <div>
+          <div class="tier-kicker">BUSINESS OUTCOMES</div>
+          <div class="tier-title">Operational impact</div>
         </div>
+        <strong id="stackOutcome">€57.6M</strong>
+      </div>
 
-        <div class="stack-principle">
-          <span>AI CostIQ principle</span>
-          <strong>Measure the whole economic system — not just the model bill.</strong>
+      <div class="stack-chip-grid outcome-chip-grid">
+        <span class="stack-chip primary-chip" data-tip="More useful work completed with the same or fewer resources.">Productivity</span>
+        <span class="stack-chip primary-chip" data-tip="Lower scrap, fewer defects, less rework and better first-pass yield.">Quality</span>
+        <span class="stack-chip primary-chip" data-tip="More units, cases or decisions completed per unit of time.">Throughput</span>
+        <span class="stack-chip secondary-chip" data-tip="Higher asset availability and fewer unplanned interruptions.">Uptime</span>
+        <span class="stack-chip muted-chip" data-tip="Reduced probability or consequence of operational and business failures.">Risk</span>
+        <span class="stack-chip secondary-chip" data-tip="Faster engineering, launch, maintenance or decision cycles.">Time-to-market</span>
+      </div>
+    </div>
+
+    <div class="stack-connector value-connector"><span>value realization</span></div>
+
+    <div class="stack-tier pnl-tier">
+      <div class="pnl-tier-copy">
+        <div class="tier-kicker">P&amp;L REALIZATION</div>
+        <div class="tier-title">Economic contribution</div>
+        <p>Time saved is not automatically profit. CostIQ separates theoretical benefit from value that can actually be realized.</p>
+      </div>
+
+      <div class="stack-pnl-math">
+        <div>
+          <span>Realized business value</span>
+          <strong id="stackValue">€57.6M</strong>
         </div>
-      </section>
+        <b>−</b>
+        <div>
+          <span>AI operating cost</span>
+          <strong id="stackPnlCost">€8.5M</strong>
+        </div>
+        <b>=</b>
+        <div class="stack-net">
+          <span>Net AI contribution</span>
+          <strong id="stackNet">€49.1M</strong>
+        </div>
+      </div>
+
+      <div class="stack-yield">
+        <span>AI ECONOMIC YIELD</span>
+        <strong id="stackRatio">6.8×</strong>
+        <small>business value per €1 of AI operating cost</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-principle">
+    <span>AI COSTIQ PRINCIPLE</span>
+    <strong>Measure the whole economic system — not just the model bill.</strong>
+  </div>
+</section>
 
         <section class="executive shell" id="scenario-lab">
           <div class="section-heading">
