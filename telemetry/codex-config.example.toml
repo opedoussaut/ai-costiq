@@ -1,0 +1,20 @@
+# AI CostIQ Codex OpenTelemetry template
+#
+# Copy/merge this section into your user-level Codex configuration,
+# normally ~/.codex/config.toml.
+#
+# Keep user prompts redacted unless you have an explicit reason and
+# appropriate data-handling approval to export them.
+
+[otel]
+environment = "dev"
+log_user_prompt = false
+exporter = { otlp-http = {
+  endpoint = "http://localhost:4318/v1/logs",
+  protocol = "binary"
+} }
+
+# IMPORTANT:
+# - This file is a template, not a project-local trusted telemetry configuration.
+# - Review current Codex documentation before production use.
+# - Do not commit secrets or OTLP authentication tokens.
